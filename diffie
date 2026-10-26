@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+<h3>Diffie-Hellman Key Exchange</h3> 
+ 
+Prime p: <input id="p" value="23"><br><br> 
+Generator g: <input id="g" value="5"><br><br> 
+Alice private key: <input id="a" value="6"><br><br> 
+Bob private key: <input id="b" value="15"><br><br> 
+ 
+<button onclick="calculate()">Calculate</button> 
+<p id="result"></p> 
+ 
+<script> 
+function calculate() { 
+    let p = +document.getElementById("p").value; 
+    let g = +document.getElementById("g").value; 
+    let a = +document.getElementById("a").value; 
+    let b = +document.getElementById("b").value; 
+ 
+    let A = (g ** a) % p; 
+    let B = (g ** b) % p; 
+    let keyA = (B ** a) % p; 
+    let keyB = (A ** b) % p; 
+ 
+    document.getElementById("result").innerHTML = 
+        "Alice Public Key: " + A + "<br>" + 
+        "Bob Public Key: " + B + "<br>" + 
+        "Alice Shared Key: " + keyA + "<br>" + 
+        "Bob Shared Key: " + keyB; 
+} 
+</script> 
+</body> 
+</html>
